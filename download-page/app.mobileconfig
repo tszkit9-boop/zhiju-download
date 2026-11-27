@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>FullScreen</key>
+            <true/>
+            <key>IsRemovable</key>
+            <true/>
+            <key>Label</key>
+            <string>智駒洞察</string>
+            <key>PayloadDescription</key>
+            <string>配置智駒洞察主畫面快捷入口</string>
+            <key>PayloadDisplayName</key>
+            <string>智駒洞察 Web Clip</string>
+            <key>PayloadIdentifier</key>
+            <string>com.zhiju.insight.webclip</string>
+            <key>PayloadType</key>
+            <string>com.apple.webClip.managed</string>
+            <key>PayloadUUID</key>
+            <string>8F4E2A10-9B3C-4D5E-8A1B-2C3D4E5F6A7B</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>Precomposed</key>
+            <true/>
+            <key>URL</key>
+            <string>https://horse-racing-bot-9qogcq5696ruecpfxfqu77.streamlit.app/</string>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>安裝後即可於主畫面全螢幕開啟智駒洞察 AI 預測系統</string>
+    <key>PayloadDisplayName</key>
+    <string>智駒洞察</string>
+    <key>PayloadIdentifier</key>
+    <string>com.zhiju.insight.profile</string>
+    <key>PayloadOrganization</key>
+    <string>智駒洞察官方認證</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>1A2B3C4D-5E6F-4A8B-9C0D-1E2F3A4B5C6D</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

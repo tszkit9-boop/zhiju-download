@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>智駒洞察 - 官方下載中心</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: #f5f6f8;
+      color: #1a1d24;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 16px 14px 36px;
+    }
+    .container {
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px 20px 26px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+    .header { display: flex; align-items: center; gap: 16px; }
+    .app-icon {
+      width: 82px; height: 82px; border-radius: 20px;
+      background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden; border: 1px solid #eef2f6;
+    }
+    .app-icon svg { width: 54px; height: 54px; }
+    .title-area { flex: 1; min-width: 0; }
+    .app-name { font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 8px; }
+    .badges-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+    .badge-ver { background: #fff1eb; color: #ea580c; }
+    .badge-size { background: #f3f4f6; color: #4b5563; }
+    .badge-auth { background: #f3f4f6; color: #4b5563; }
+    .divider { height: 1px; background: #f1f5f9; margin: 18px 0 14px; }
+    .rating-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .stars { color: #f59e0b; font-size: 17px; letter-spacing: 2px; }
+    .score { font-size: 18px; font-weight: 800; color: #111827; }
+    .reviews { font-size: 13px; color: #6b7280; }
+    .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; color: #374151; font-size: 13px; font-weight: 600; }
+    .meta-item { display: flex; align-items: center; gap: 5px; }
+    .desc-card { margin-top: 18px; background: #fafbfc; border: 1px solid #f1f5f9; border-radius: 18px; padding: 16px; font-size: 14px; line-height: 1.65; color: #374151; }
+    .desc-title { font-weight: 700; color: #111827; margin-bottom: 6px; font-size: 14.5px; }
+    .highlight { color: #ea580c; font-weight: 700; }
+    .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .platform-card { background: #ffffff; border: 1.5px solid #eef0f4; border-radius: 20px; padding: 16px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03); }
+    .platform-card.ios { border-color: #e5e7eb; }
+    .plat-head { display: flex; align-items: center; gap: 6px; font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+    .plat-tag { font-size: 12px; font-weight: 600; color: #6b7280; background: #f3f4f6; padding: 3px 12px; border-radius: 999px; margin-bottom: 14px; }
+    .btn-dl { width: 100%; border: none; border-radius: 999px; padding: 11px 10px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; }
+    .btn-dl:active { transform: scale(0.97); }
+    .btn-android { background: #fff1eb; color: #ea580c; }
+    .btn-ios { background: #0f172a; color: #ffffff; }
+    .bottom-actions { display: flex; align-items: center; gap: 22px; margin-top: 22px; padding-top: 16px; border-top: 1px solid #f1f5f9; padding-left: 6px; }
+    .action-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #374151; background: none; border: none; cursor: pointer; }
+    .modal-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 999; }
+    .modal-mask.show { display: flex; }
+    .modal-box { width: 100%; max-width: 360px; background: #fff; border-radius: 22px; padding: 22px 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
+    .modal-title { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #111827; }
+    .modal-text { font-size: 13.5px; color: #4b5563; line-height: 1.65; text-align: left; margin-bottom: 16px; }
+    .modal-step { background: #f8fafc; padding: 10px 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid #e2e8f0; }
+    .modal-close { width: 100%; padding: 11px; border-radius: 999px; border: none; background: #0f172a; color: #fff; font-weight: 700; font-size: 14px; cursor: pointer; }
+    #qrImg { width: 190px; height: 190px; margin: 10px auto 14px; display: block; border-radius: 12px; border: 1px solid #e5e7eb; padding: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="app-icon">
+        <svg viewBox="0 0 64 64" fill="none">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="64" y2="64">
+              <stop offset="0%" stop-color="#1d4ed8"/>
+              <stop offset="100%" stop-color="#0ea5e9"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="16" fill="url(#g1)"/>
+          <path d="M32 13L16 50H23.5L26.8 41.5H37.2L40.5 50H48L32 13ZM29.2 35L32 27.2L34.8 35H29.2Z" fill="#ffffff"/>
+          <path d="M13 38C22 44 43 41 52 27" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="title-area">
+        <div class="app-name">智駒洞察</div>
+        <div class="badges-row">
+          <span class="badge badge-ver">v16.0 最新版</span>
+          <span class="badge badge-size">18.4 MB</span>
+        </div>
+        <div><span class="badge badge-auth">🔒 官方認證</span></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="rating-row">
+      <span class="stars">★★★★★</span>
+      <span class="score">4.8</span>
+      <span class="reviews">(2.4k 評價)</span>
+    </div>
+    <div class="meta-row">
+      <div class="meta-item">🕒 <span>12+</span></div>
+      <div class="meta-item">⚡ <span>極速</span></div>
+      <div class="meta-item">📱 <span>全螢幕</span></div>
+    </div>
+    <div class="desc-card">
+      <div class="desc-title">智駒洞察 · AI 賽事數據分析平台</div>
+      針對 <span class="highlight">Android</span> 與 <span class="highlight">iOS</span> 深度優化，提供流暢的即時賠率追蹤與 AI 預測體驗。立即選擇您的平台，安全下載。
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="plat-head">🤖 Android</div>
+        <div class="plat-tag">APK / 網頁版</div>
+        <button class="btn-dl btn-android" onclick="handleAndroid()">⬇ 立即下載</button>
+      </div>
+      <div class="platform-card ios">
+        <div class="plat-head"> iOS</div>
+        <div class="plat-tag">設定描述檔</div>
+        <button class="btn-dl btn-ios" onclick="handleIOS()">⬇ 前往下載</button>
+      </div>
+    </div>
+    <div class="bottom-actions">
+      <button class="action-link" onclick="openQR()">🏁 二維碼</button>
+      <button class="action-link" onclick="sharePage()">🔗 分享</button>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="iosModal">
+    <div class="modal-box">
+      <div class="modal-title">📲 iOS 描述檔安裝步驟</div>
+      <div class="modal-text">
+        <div class="modal-step"><b>第 1 步：</b>系統將自動下載描述檔，請在彈出視窗按 <b>「允許」</b>。</div>
+        <div class="modal-step"><b>第 2 步：</b>打開手機 <b>「設定」 &gt;「一般」&gt;「VPN 與裝置管理」</b>。</div>
+        <div class="modal-step"><b>第 3 步：</b>在「設定描述檔」點選 <b>「智駒洞察」</b>，按右上角 <b>「安裝」</b> 即可。</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('iosModal')">我知道了</button>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="qrModal">
+    <div class="modal-box">
+      <div class="modal-title">掃描二維碼下載</div>
+      <img id="qrImg" alt="QR Code" />
+      <div class="modal-text" style="text-align:center;">請使用手機相機或 Safari 掃描開啟</div>
+      <button class="modal-close" onclick="closeModal('qrModal')">關閉</button>
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      webAppUrl: "https://horse-racing-bot-9qogcq5696ruecpfxfqu77.streamlit.app/",
+      iosProfileUrl: "./app.mobileconfig",
+      androidApkUrl: ""
+    };
+    function handleIOS() {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      if (!isIOS) {
+        alert("請使用 iPhone 或 iPad 的 Safari 瀏覽器開啟此頁面進行安裝。");
+        return;
+      }
+      window.location.href = CONFIG.iosProfileUrl;
+      setTimeout(() => { document.getElementById("iosModal").classList.add("show"); }, 900);
+    }
+    function handleAndroid() {
+      if (CONFIG.androidApkUrl) { window.location.href = CONFIG.androidApkUrl; }
+      else { window.location.href = CONFIG.webAppUrl; }
+    }
+    function openQR() {
+      const currentUrl = encodeURIComponent(window.location.href);
+      document.getElementById("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" + currentUrl;
+      document.getElementById("qrModal").classList.add("show");
+    }
+    function closeModal(id) { document.getElementById(id).classList.remove("show"); }
+    async function sharePage() {
+      if (navigator.share) {
+        try { await navigator.share({ title: "智駒洞察 - 官方下載", text: "AI 賽馬數據分析平台，立即下載體驗", url: window.location.href }); } catch (e) {}
+      } else {
+        navigator.clipboard?.writeText(window.location.href);
+        alert("已複製下載頁連結，可直接貼上分享！");
+      }
+    }
+  </script>
+</body>
+</html>
