@@ -184,6 +184,10 @@
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
     }
 
+    .platform-card.ios {
+      border-color: #e5e7eb;
+    }
+
     .plat-head {
       display: flex;
       align-items: center;
@@ -374,7 +378,7 @@
     <div class="platform-grid">
       <div class="platform-card">
         <div class="plat-head">🤖 Android</div>
-        <div class="plat-tag">APK / 網頁版</div>
+        <div class="plat-tag">APK 安裝檔</div>
         <button class="btn-dl btn-android" onclick="handleAndroid()">⬇ 立即下載</button>
       </div>
       <div class="platform-card ios">
@@ -415,7 +419,7 @@
     const CONFIG = {
       webAppUrl: "https://horse-racing-bot-9qogcq5696ruecpfxfqu77.streamlit.app/",
       iosProfileUrl: "./app.mobileconfig",
-      androidApkUrl: "https://github.com/tszkit9-boop/zhiju-download/tree/main/download-page",
+      androidApkUrl: "https://github.com/tszkit9-boop/zhiju-download/raw/refs/heads/main/download-page/ZhijuInsight.apk",
       counterNamespace: "zhiju-insight-hk",
       counterKey: "downloads"
     };
