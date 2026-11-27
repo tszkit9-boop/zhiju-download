@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>智駒洞察 - 官方下載中心</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "Microsoft JhengHei", sans-serif;
       background: #f5f6f8;
@@ -15,6 +21,7 @@
       justify-content: center;
       padding: 16px 14px 36px;
     }
+
     .container {
       width: 100%;
       max-width: 430px;
@@ -23,51 +30,300 @@
       padding: 24px 20px 26px;
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     }
-    .header { display: flex; align-items: center; gap: 16px; }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
     .app-icon {
-      width: 82px; height: 82px; border-radius: 20px;
+      width: 82px;
+      height: 82px;
+      border-radius: 20px;
       background: linear-gradient(145deg, #f8fafc, #e2e8f0);
       box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; overflow: hidden; border: 1px solid #eef2f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid #eef2f6;
     }
-    .app-icon svg { width: 54px; height: 54px; }
-    .title-area { flex: 1; min-width: 0; }
-    .app-name { font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 8px; }
-    .badges-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
-    .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
-    .badge-ver { background: #fff1eb; color: #ea580c; }
-    .badge-size { background: #f3f4f6; color: #4b5563; }
-    .badge-auth { background: #f3f4f6; color: #4b5563; }
-    .divider { height: 1px; background: #f1f5f9; margin: 18px 0 14px; }
-    .rating-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-    .stars { color: #f59e0b; font-size: 17px; letter-spacing: 2px; }
-    .score { font-size: 18px; font-weight: 800; color: #111827; }
-    .reviews { font-size: 13px; color: #6b7280; }
-    .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; color: #374151; font-size: 13px; font-weight: 600; }
-    .meta-item { display: flex; align-items: center; gap: 5px; }
-    .desc-card { margin-top: 18px; background: #fafbfc; border: 1px solid #f1f5f9; border-radius: 18px; padding: 16px; font-size: 14px; line-height: 1.65; color: #374151; }
-    .desc-title { font-weight: 700; color: #111827; margin-bottom: 6px; font-size: 14.5px; }
-    .highlight { color: #ea580c; font-weight: 700; }
-    .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
-    .platform-card { background: #ffffff; border: 1.5px solid #eef0f4; border-radius: 20px; padding: 16px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03); }
-    .platform-card.ios { border-color: #e5e7eb; }
-    .plat-head { display: flex; align-items: center; gap: 6px; font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 8px; }
-    .plat-tag { font-size: 12px; font-weight: 600; color: #6b7280; background: #f3f4f6; padding: 3px 12px; border-radius: 999px; margin-bottom: 14px; }
-    .btn-dl { width: 100%; border: none; border-radius: 999px; padding: 11px 10px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; }
-    .btn-dl:active { transform: scale(0.97); }
-    .btn-android { background: #fff1eb; color: #ea580c; }
-    .btn-ios { background: #0f172a; color: #ffffff; }
-    .bottom-actions { display: flex; align-items: center; gap: 22px; margin-top: 22px; padding-top: 16px; border-top: 1px solid #f1f5f9; padding-left: 6px; }
-    .action-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #374151; background: none; border: none; cursor: pointer; }
-    .modal-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 999; }
-    .modal-mask.show { display: flex; }
-    .modal-box { width: 100%; max-width: 360px; background: #fff; border-radius: 22px; padding: 22px 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
-    .modal-title { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #111827; }
-    .modal-text { font-size: 13.5px; color: #4b5563; line-height: 1.65; text-align: left; margin-bottom: 16px; }
-    .modal-step { background: #f8fafc; padding: 10px 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid #e2e8f0; }
-    .modal-close { width: 100%; padding: 11px; border-radius: 999px; border: none; background: #0f172a; color: #fff; font-weight: 700; font-size: 14px; cursor: pointer; }
-    #qrImg { width: 190px; height: 190px; margin: 10px auto 14px; display: block; border-radius: 12px; border: 1px solid #e5e7eb; padding: 8px; }
+
+    .app-icon svg {
+      width: 54px;
+      height: 54px;
+    }
+
+    .title-area {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .badge-ver {
+      background: #fff1eb;
+      color: #ea580c;
+    }
+
+    .badge-size, .badge-auth {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .divider {
+      height: 1px;
+      background: #f1f5f9;
+      margin: 18px 0 14px;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 17px;
+      letter-spacing: 2px;
+    }
+
+    .score {
+      font-size: 18px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .reviews {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 6px;
+      color: #374151;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .desc-card {
+      margin-top: 18px;
+      background: #fafbfc;
+      border: 1px solid #f1f5f9;
+      border-radius: 18px;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #374151;
+    }
+
+    .desc-title {
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 6px;
+      font-size: 14.5px;
+    }
+
+    .highlight {
+      color: #ea580c;
+      font-weight: 700;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .platform-card {
+      background: #ffffff;
+      border: 1.5px solid #eef0f4;
+      border-radius: 20px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    }
+
+    .plat-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .plat-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      background: #f3f4f6;
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .btn-dl {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 11px 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .btn-dl:active {
+      transform: scale(0.97);
+    }
+
+    .btn-android {
+      background: #fff1eb;
+      color: #ea580c;
+    }
+
+    .btn-ios {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .bottom-actions {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
+      padding-left: 6px;
+    }
+
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .modal-mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .modal-mask.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 360px;
+      background: #fff;
+      border-radius: 22px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .modal-text {
+      font-size: 13.5px;
+      color: #4b5563;
+      line-height: 1.65;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .modal-step {
+      background: #f8fafc;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .modal-close {
+      width: 100%;
+      padding: 11px;
+      border-radius: 999px;
+      border: none;
+      background: #0f172a;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #qrImg {
+      width: 190px;
+      height: 190px;
+      margin: 10px auto 14px;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      padding: 8px;
+    }
   </style>
 </head>
 <body>
@@ -95,21 +351,26 @@
         <div><span class="badge badge-auth">🔒 官方認證</span></div>
       </div>
     </div>
+
     <div class="divider"></div>
+
     <div class="rating-row">
       <span class="stars">★★★★★</span>
       <span class="score">4.8</span>
-      <span class="reviews">(18.6k 評價 · 50k+ 下載)</span>
+      <span class="reviews"><span id="dlCount">載入中...</span> 次真實下載</span>
     </div>
+
     <div class="meta-row">
       <div class="meta-item">🕒 <span>18+</span></div>
       <div class="meta-item">⚡ <span>極速</span></div>
       <div class="meta-item">📱 <span>全螢幕</span></div>
     </div>
+
     <div class="desc-card">
       <div class="desc-title">智駒洞察 · AI 賽事數據分析平台</div>
       針對 <span class="highlight">Android</span> 與 <span class="highlight">iOS</span> 深度優化，提供流暢的即時賠率追蹤與 AI 預測體驗。立即選擇您的平台，安全下載。
     </div>
+
     <div class="platform-grid">
       <div class="platform-card">
         <div class="plat-head">🤖 Android</div>
@@ -122,6 +383,7 @@
         <button class="btn-dl btn-ios" onclick="handleIOS()">⬇ 前往下載</button>
       </div>
     </div>
+
     <div class="bottom-actions">
       <button class="action-link" onclick="openQR()">🏁 二維碼</button>
       <button class="action-link" onclick="sharePage()">🔗 分享</button>
@@ -153,35 +415,88 @@
     const CONFIG = {
       webAppUrl: "https://horse-racing-bot-9qogcq5696ruecpfxfqu77.streamlit.app/",
       iosProfileUrl: "./app.mobileconfig",
-      androidApkUrl: ""
+      androidApkUrl: "",
+      counterNamespace: "zhiju-insight-hk",
+      counterKey: "downloads"
     };
+
+    function formatCount(num) {
+      if (typeof num !== "number" || isNaN(num)) return "0";
+      return num.toLocaleString("en-US");
+    }
+
+    async function fetchDownloadCount() {
+      const el = document.getElementById("dlCount");
+      try {
+        const res = await fetch(`https://api.counterapi.dev/v1/${CONFIG.counterNamespace}/${CONFIG.counterKey}`);
+        if (!res.ok) throw new Error("fetch failed");
+        const data = await res.json();
+        el.textContent = formatCount(data.count ?? 0);
+      } catch (e) {
+        el.textContent = "0";
+      }
+    }
+
+    async function incrementDownloadCount() {
+      const el = document.getElementById("dlCount");
+      try {
+        const res = await fetch(`https://api.counterapi.dev/v1/${CONFIG.counterNamespace}/${CONFIG.counterKey}/up`);
+        if (!res.ok) throw new Error("up failed");
+        const data = await res.json();
+        if (typeof data.count === "number") {
+          el.textContent = formatCount(data.count);
+        }
+      } catch (e) {}
+    }
+
     function handleIOS() {
+      incrementDownloadCount();
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
       if (!isIOS) {
         alert("請使用 iPhone 或 iPad 的 Safari 瀏覽器開啟此頁面進行安裝。");
         return;
       }
       window.location.href = CONFIG.iosProfileUrl;
-      setTimeout(() => { document.getElementById("iosModal").classList.add("show"); }, 900);
+      setTimeout(() => {
+        document.getElementById("iosModal").classList.add("show");
+      }, 900);
     }
+
     function handleAndroid() {
-      if (CONFIG.androidApkUrl) { window.location.href = CONFIG.androidApkUrl; }
-      else { window.location.href = CONFIG.webAppUrl; }
+      incrementDownloadCount();
+      if (CONFIG.androidApkUrl) {
+        window.location.href = CONFIG.androidApkUrl;
+      } else {
+        window.location.href = CONFIG.webAppUrl;
+      }
     }
+
     function openQR() {
       const currentUrl = encodeURIComponent(window.location.href);
       document.getElementById("qrImg").src = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" + currentUrl;
       document.getElementById("qrModal").classList.add("show");
     }
-    function closeModal(id) { document.getElementById(id).classList.remove("show"); }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("show");
+    }
+
     async function sharePage() {
       if (navigator.share) {
-        try { await navigator.share({ title: "智駒洞察 - 官方下載", text: "AI 賽馬數據分析平台，立即下載體驗", url: window.location.href }); } catch (e) {}
+        try {
+          await navigator.share({
+            title: "智駒洞察 - 官方下載",
+            text: "AI 賽馬數據分析平台，立即下載體驗",
+            url: window.location.href
+          });
+        } catch (e) {}
       } else {
         navigator.clipboard?.writeText(window.location.href);
         alert("已複製下載頁連結，可直接貼上分享！");
       }
     }
+
+    fetchDownloadCount();
   </script>
 </body>
 </html>
